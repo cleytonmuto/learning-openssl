@@ -3,8 +3,8 @@
 SET PATH=%PATH%;C:\Program Files\Git\usr\bin\openssl.exe
 SET OPENSSL_CONF=C:\Program Files\Git\usr\bin\openssl.cfg
 
-:: Create a random file with 256 bytes (2048 bits):
-openssl rand 256 > symmetric_keyfile.key
+:: Create a random file with 32 bytes (256 bits):
+openssl rand 32 > symmetric_keyfile.key
 
 :: Encrypt constitution.pdf using AES algorithm (with salt) and the above key file:
 openssl enc -in constitution.pdf -out constitution.pdf.enc -e -aes-256-cbc -salt -pbkdf2 -kfile symmetric_keyfile.key
